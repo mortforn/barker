@@ -1,7 +1,7 @@
 import React from 'react';
 
-const App = () => (
+const DogList = () => (
   <h1 className="display-1">Dog List Component</h1>
 );
 
-export default App;
+export default DogList;
