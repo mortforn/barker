@@ -19,7 +19,11 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
           <div className="card">
             <img className="card-img-top" src={currentDog.image} alt="Dog 1" />
             <div className="card-body">
-              <h2 className="card-title">{currentDog.name}</h2>
+            <h2 className="card-title">
+              <span>{currentDog.name}</span>
+              <button className="btn btn-secondary btn-sm ml-1" name='no' onClick={showInfo}>Info</button>
+            </h2>
+            
 
               {moreInfo ? 
               <Fragment>
@@ -33,9 +37,7 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
               : null}
               
               <button className="btn btn-danger" name='no' onClick={handleClick}>No</button>
-              <button className="btn btn-secondary" name='no' onClick={showInfo}>Info</button>
-              <button className="btn btn-success float-right" name='yes' onClick={handleClick}>Yes</button>
-              
+              <button className="btn btn-success float-right" name='yes' onClick={handleClick}>Yes</button>              
             </div>
           </div>
         </div>
