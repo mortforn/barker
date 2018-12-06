@@ -34,3 +34,21 @@ code {
   margin-bottom: 40px;
 
 }
+
+#matches-header {
+  display: block;
+  margin: auto;
+  text-align: center;
+
+  /* position: fixed; */
+}
+
+.thumbnail {
+  max-height: 350px;
+  max-width: auto;
+  border-radius: 50%;
+}
+
+#list-of-matches {
+  margin-left: 8.5%
+}
