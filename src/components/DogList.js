@@ -85,11 +85,11 @@ const DogList = () => {
       }
     });
     if (mostFrequent === 'M') {
-      return 'Medium';
+        return 'Medium';
     } else if (mostFrequent === 'S') {
-      return 'Small';
-    }
-    return 'Large';
+        return 'Small';
+    } else if (mostFrequent === "L")
+        return 'Large';
   }
   const mostFrequentGender = (dogList) => {
     let counts = {};
@@ -109,9 +109,9 @@ const DogList = () => {
     });
     if (mostFrequent === 'M') {
       return 'Male';
+    } else if (mostFrequent === 'F')
+      return 'Female';
     }
-    return 'Female';
-  }
   const mostFrequentBreed = (dogList) => {
     let counts = {};
     let compare = 0;
@@ -143,23 +143,29 @@ const DogList = () => {
       <DogListItem key={dog.id} dog={dog}/>
     )
   })
+  
+  if (dogs.length === 0) {
+    alert('Go like some dogs you loser');
+    //redirect
 
+  } else {
 
-  return (
-  <div>
-  <div className="container container-fluid" id="matches-header">
-    <h1 className="display-1">Your Barks!</h1>
-    <h3 id="results-lead-up">Based on your results, it looks like your favorite dogs are:</h3>
-    <h4 id='preferences'>{ Preferences }</h4>
-    {/* {mostFrequentSize} {mostFrequentGender} {mostFrequentBreed} */}
-    <Link to='/'><button className='btn btn-primary'>Back</button></Link>
+    return (
+    <div>
+    <div className="container container-fluid" id="matches-header">
+      <h1 className="display-1">Your Barks!</h1>
+      <h3 id="results-lead-up">Based on your results, it looks like your favorite dogs are:</h3>
+      <h4 id='preferences'>{ Preferences }</h4>
+      {/* {mostFrequentSize} {mostFrequentGender} {mostFrequentBreed} */}
+      <Link to='/'><button className='btn btn-primary'>Back</button></Link>
+      </div>
+      <div className="row" id="list-of-matches">
+        { Dawgz }
+        {/*This will be the card display for each of the matches*/}
+      </div>
     </div>
-    <div className="row" id="list-of-matches">
-       { Dawgz }
-      {/*This will be the card display for each of the matches*/}
-    </div>
-  </div>
-  );
+    );
+  }
 }
 
 export default DogList;

@@ -5,7 +5,7 @@ const DogListItem = ({dog}) => {
   
   return (
     <div className="col-md-3 thumbnail" id={dog.id}>
-    <img src={dog.image} className="thumbnail" alt={dog.name}></img>
+   <Link to={`/matches/${dog.id}`}><img src={dog.image} className="thumbnail" alt={dog.name}></img></Link>
     </div>
   )
 }
