@@ -1,3 +1,6 @@
+#root {
+  background-image: -moz-repeating-linear-gradient(pink, coral)
+}
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +14,34 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+Search {
+  background-color: pink;
+}
+
+#container {
+  background-color: coral;
+}
+
+#homepage-card {
+  display: block;
+  margin: auto;
+  margin-top: 16.5%;
+  color: white;
+  width: 40rem;
+  text-align: center;
+  background-image: linear-gradient(slategrey, black)
+}
+
+.form-control {
+  text-align: center;
+}
+
+#search-button {
+  background-color: slategrey;
+  border-color: black;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
 }
