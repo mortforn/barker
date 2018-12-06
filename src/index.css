@@ -36,8 +36,19 @@ code {
 }
 
 #matches-header {
-  display: inline-block;
+  display: block;
   margin: auto;
   text-align: center;
-  position: fixed;
+
+  /* position: fixed; */
+}
+
+.thumbnail {
+  max-height: 350px;
+  max-width: auto;
+  border-radius: 50%;
+}
+
+#list-of-matches {
+  margin-left: 8.5%
 }
