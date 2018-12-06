@@ -1,10 +1,20 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const DogDetail = ({routerProps, dogs}) => {
+const DogDetail = ({routerProps, dogs, unmatchDog}) => {
   const dog = dogs.find(d => d.id === routerProps.match.params.id);
+
+  const handleClick = () => {
+    unmatchDog(dog);
+    routerProps.history.push('/matches');
+  }
 
   return (
     <div className="container my-5">
+    <div className="row">
+      <Link to='/matches'><button className='btn btn-secondary mr-3'>Back</button></Link>
+      <Link to='/'><button className='btn btn-primary'>Start Over</button></Link>
+    </div>
       <div className="row">
         <div className="col-md-4 offset-md-4">
           <div className="card">
@@ -18,7 +28,7 @@ const DogDetail = ({routerProps, dogs}) => {
               <p className="card-text"><strong>Age: </strong>{dog.age}</p>
               <p className="card-text"><strong>Size: </strong>{dog.size}</p>
               <p className="card-text"><strong>Description: </strong>{dog.description}</p>
-              <button className="btn btn-danger" name='no'>Unmatch</button>
+              <button className="btn btn-danger" name='no' onClick={handleClick}>Unmatch</button>
             </div>
           </div>
         </div>

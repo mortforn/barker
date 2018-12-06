@@ -65,6 +65,10 @@ class App extends Component {
     this.setState({moreInfo: !this.state.moreInfo});
   }
 
+  unmatchDog = dog => {
+    this.setState({dogs: this.state.dogs.filter(d => d.id !== dog.id)});
+  }
+
 
   render() {
     return (
@@ -74,7 +78,7 @@ class App extends Component {
           <DogMatch moreInfo={this.state.moreInfo} showInfo={this.showInfo} changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
         )} />
         <Route path='/matches/:id' render={routerProps => (
-          <DogDetail routerProps={routerProps} dogs={this.state.dogs} />
+          <DogDetail routerProps={routerProps} dogs={this.state.dogs} unmatchDog={this.unmatchDog} />
         )} />
         <Route path='/matches' render={() => (
           <DogList dogs={this.state.dogs} />

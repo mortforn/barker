@@ -33,6 +33,7 @@ const DogList = ({dogs}) => {
     } else if (mostFrequent === "L")
         return 'Large';
   }
+
   const mostFrequentGender = dogList => {
     let counts = {};
     let compare = 0;
@@ -49,11 +50,9 @@ const DogList = ({dogs}) => {
         mostFrequent = dog.sex;
       }
     });
-    if (mostFrequent === 'M') {
-      return 'Male';
-    } else if (mostFrequent === 'F')
-      return 'Female';
-    }
+    return mostFrequent === 'M' ? 'Male' : 'Female'
+  }
+
   const mostFrequentBreed = dogList => {
     let counts = {};
     let compare = 0;
@@ -99,7 +98,8 @@ const DogList = ({dogs}) => {
       <h3 id="results-lead-up">Based on your results, it looks like your favorite dogs are:</h3>
       <h4 id='preferences'>{ Preferences }</h4>
       {/* {mostFrequentSize} {mostFrequentGender} {mostFrequentBreed} */}
-      <Link to='/'><button className='btn btn-primary'>Back</button></Link>
+      <Link to='/match'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
+      <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Start Over</button></Link>
       </div>
       <div className="row" id="list-of-matches">
         { Dawgz }
