@@ -73,8 +73,12 @@ class App extends Component {
         <Route path='/match' render={() => (
           <DogMatch moreInfo={this.state.moreInfo} showInfo={this.showInfo} changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
         )} />
-        <Route path='/matches' component={DogList} />
-        <Route path='/matches/:id' component={DogDetail} />
+        <Route path='/matches/:id' render={routerProps => (
+          <DogDetail routerProps={routerProps} dogs={this.state.dogs} />
+        )} />
+        <Route path='/matches' render={() => (
+          <DogList dogs={this.state.dogs} />
+        )} />
       </Switch>
     );
   }
