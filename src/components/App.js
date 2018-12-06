@@ -17,6 +17,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      moreInfo: false,
       location: '27701',
       dogs,
       likedDogs: [],
@@ -60,13 +61,17 @@ class App extends Component {
     this.setState({dislikedDogs: this.state.dislikedDogs.concat([dogId])});
   }
 
+  showInfo = () => {
+    this.setState({moreInfo: !this.state.moreInfo});
+  }
+
 
   render() {
     return (
       <Switch>
         <Route exact path='/' component={Search} />
         <Route path='/match' render={() => (
-          <DogMatch changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
+          <DogMatch moreInfo={this.state.moreInfo} showInfo={this.showInfo} changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
         )} />
         <Route path='/matches' component={DogList} />
         <Route path='/matches/:id' component={DogDetail} />
