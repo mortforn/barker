@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Search from './Search';
@@ -33,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={Search} findDogs={this.componentDidMount()}/>
+        <Route exact path='/' component={Search} />
         <Route path='/matches' component={DogList} />
         <Route path='/matches/:id' component={DogDetail} />
       </Switch>
