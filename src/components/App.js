@@ -18,9 +18,9 @@ class App extends Component {
 
     this.state = {
       location: '27701',
-      fetchedDogs: dogs,
+      dogs,
       likedDogs: [],
-      currentDog: this.state.fetchedDogs[1],
+      dogIndex: 0,
       dislikedDogs: [] // Array of ids to avoid potential duplicate dog matches
     };
   }
@@ -44,6 +44,9 @@ class App extends Component {
   //   });
   // }
     
+  changeCurrentDog = () => {
+    this.setState({dogIndex: this.state.dogIndex + 1});
+  }
 
   setLocation = location => {
     this.setState({location});
@@ -53,8 +56,8 @@ class App extends Component {
     this.setState({likedDogs: this.state.likedDogs.concat([dog])});
   }
 
-  dislikeDog = dog => {
-    this.setState({dislikedDogs: this.state.dislikedDogs.concat([dog])});
+  dislikeDog = dogId => {
+    this.setState({dislikedDogs: this.state.dislikedDogs.concat([dogId])});
   }
 
 
@@ -62,8 +65,8 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' component={Search} />
-        <Route path='/match' render={routerProps => (
-          <DogMatch routerProps={routerProps} fetchedDogs={this.state.fetchedDogs} />
+        <Route path='/match' render={() => (
+          <DogMatch changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
         )} />
         <Route path='/matches' component={DogList} />
         <Route path='/matches/:id' component={DogDetail} />
