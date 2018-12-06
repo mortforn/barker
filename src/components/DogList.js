@@ -157,7 +157,7 @@ const DogList = () => {
       <h3 id="results-lead-up">Based on your results, it looks like your favorite dogs are:</h3>
       <h4 id='preferences'>{ Preferences }</h4>
       {/* {mostFrequentSize} {mostFrequentGender} {mostFrequentBreed} */}
-      <Link to='/'><button className='btn btn-primary'>Back</button></Link>
+      <Link to='/match'><button className='btn btn-primary'>Back</button></Link>
       </div>
       <div className="row" id="list-of-matches">
         { Dawgz }
