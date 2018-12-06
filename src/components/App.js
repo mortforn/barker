@@ -5,6 +5,11 @@ import DogList from './DogList';
 import DogDetail from './DogDetail';
 import pf from 'petfinder-client';
 
+const petFinder = pf({
+  key: '<INSERT API KEY HERE>',
+  secret: '<INSERT API SECRET HERE>'
+});
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,15 +20,14 @@ class App extends Component {
       currentDog: null,
       dislikedDogs: [] // Array of ids to avoid potential duplicate dog matches
     };
-
-    this.fetchDogs();
   }
 
-  
-  fetchDogs = () => {
-    
-    console.log(dogs);
+  componentDidMount() {
+    petFinder.pet.find({location: '27701'}).then(resp => { // pet.find({animal: 'dog'}) doesn't work :/
+      this.setState({fetchedDogs: resp.petfinder.pets.pet});
+    });
   }
+
 
   render() {
     return (
