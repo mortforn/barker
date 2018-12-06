@@ -3,16 +3,26 @@ import {Switch, Route} from 'react-router-dom';
 import Search from './Search';
 import DogList from './DogList';
 import DogDetail from './DogDetail';
+import pf from 'petfinder-client';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      fetchedDogs: [],
       likedDogs: [],
       currentDog: null,
       dislikedDogs: [] // Array of ids to avoid potential duplicate dog matches
     };
+
+    this.fetchDogs();
+  }
+
+  
+  fetchDogs = () => {
+    
+    console.log(dogs);
   }
 
   render() {
