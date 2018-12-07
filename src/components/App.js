@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import Search from './Search';
 import DogList from './DogList';
 import DogDetail from './DogDetail';
