@@ -29,7 +29,8 @@ class App extends Component {
   fetchDogs = (location, callback) => {
     petFinder.pet.find({
       animal: 'dog',
-      location
+      location,
+      count: 100
     }).then(resp => {
       if (resp.petfinder.pets === undefined) {
         return this.setState({dogs: []});

@@ -26,7 +26,7 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
       <div className="row">
         <div className="col-md-4 offset-md-4">
           <div className="card">
-            <img className="card-img-top" src={currentDog.image} alt={currentDog.name} />
+            <img className="card-img-top dog-img rounded" src={currentDog.image} alt={currentDog.name} />
             <div className="card-body">
             <h2 className="card-title">
               <span>{currentDog.name}</span>
