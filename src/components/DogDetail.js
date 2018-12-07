@@ -2,8 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const DogDetail = ({routerProps, dogs, unmatchDog}) => {
-  const dog = dogs.find(d => d.id === routerProps.match.params.id);
+  const dog = dogs.find(d => d.id === routerProps.match.params.id); // Locate dog
 
+  // Unmatch dog then redirect to the matches view
   const handleClick = () => {
     unmatchDog(dog);
     routerProps.history.push('/matches');
