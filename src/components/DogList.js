@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import DogListItem from './DogListItem'
 
-//MortForn APIKEY = f5fcb86ef14100e76fe6fd4849928f17
-//MortForn SECRET = 0414151e03e5a6b5e9ed9934a4ef4390
-
 /*this will be a stateless component that receives the likedDogs array
 as props from the App component*/
 const DogList = ({dogs}) => {
@@ -58,16 +55,19 @@ const DogList = ({dogs}) => {
     let compare = 0;
     let mostFrequent;
     dogList.forEach(dog => {
-      let breed = dog.breeds;
-      if (counts[breed] === undefined) {
-        counts[breed] = 1;
-      } else {
-        counts[breed] = counts[breed] + 1;
+      let breed = dog.breed;
+      if (typeof breed === 'object') {
+        breed = `${breed.join('-')} Mixe`;
       }
-      if (counts[breed] > compare) {
-        compare = counts[breed];
-        mostFrequent = dog.breeds;
-      }
+        if (counts[breed] === undefined) {
+          counts[breed] = 1;
+        } else {
+          counts[breed] = counts[breed] + 1;
+        }
+        if (counts[breed] > compare) {
+          compare = counts[breed];
+          mostFrequent = breed;
+        }
     });
     return mostFrequent;
   }
@@ -86,8 +86,15 @@ const DogList = ({dogs}) => {
   })
   
   if (dogs.length === 0) {
-    alert('Go like some dogs you loser');
-    //redirect
+    return (
+      <div className="container container-fluid" id="matches-header">
+       <h1 className="display-1">Your Barks!</h1>
+      <h3 id="results-lead-up">It looks like you haven't liked any dogs yet!</h3>
+      <h3 id="results-lead-up">What are you thinking, sit down and decide what dog you like!</h3>
+      <Link to='/match'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
+      <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Start Over</button></Link>
+      </div>
+    )
 
   } else {
 
@@ -97,13 +104,11 @@ const DogList = ({dogs}) => {
       <h1 className="display-1">Your Barks!</h1>
       <h3 id="results-lead-up">Based on your results, it looks like your favorite dogs are:</h3>
       <h4 id='preferences'>{ Preferences }</h4>
-      {/* {mostFrequentSize} {mostFrequentGender} {mostFrequentBreed} */}
       <Link to='/match'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
       <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Start Over</button></Link>
       </div>
       <div className="row" id="list-of-matches">
         { Dawgz }
-        {/*This will be the card display for each of the matches*/}
       </div>
     </div>
     );

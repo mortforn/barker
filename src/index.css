@@ -20,7 +20,7 @@ code {
   color: white;
   width: 40rem;
   text-align: center;
-  background-image: linear-gradient(slategrey, black)
+  background-image: url('https://cdnblog.rentcafe.com/blog/wp-content/uploads/2012/05/Fotolia_34937840_Subscription_L.jpg');
 }
 
 .form-control {
@@ -44,9 +44,10 @@ code {
 }
 
 .thumbnail {
-  max-height: 350px;
-  max-width: auto;
-  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  border-radius: 25%;
+  margin-bottom: 40px;
 }
 
 #list-of-matches {
