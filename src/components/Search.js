@@ -28,7 +28,7 @@ class Search extends Component {
       <div className="container container-fluid">
         <div className='card' id='homepage-card'>
           <h2 className="display-1">barker.</h2>
-          <input className='form-control'type="text" value={this.state.location} onChange={e => this.setState({location: e.target.value})} onKeyPress={this.handleEnter} placeholder='Search for Single Dogs in your Area' />
+          <input required autoFocus className='form-control'type="text" value={this.state.location} onChange={e => this.setState({location: e.target.value})} onKeyPress={this.handleEnter} placeholder='Search for Single Dogs in your Area' />
           <button className='btn btn-primary' id="search-button" onClick={this.handleClick}>BARK</button>
         </div>
       </div>

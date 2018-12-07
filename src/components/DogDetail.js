@@ -18,7 +18,7 @@ const DogDetail = ({routerProps, dogs, unmatchDog}) => {
       <div className="row">
         <div className="col-md-4 offset-md-4">
           <div className="card">
-            <img className="card-img-top" src={dog.image} alt="Dog 1" />
+            <img className="card-img-top" src={dog.image} alt={dog.name} />
             <div className="card-body">
               <h2 className="card-title">{dog.name}</h2>
               <p><strong>Breeds: </strong>{dog.breed}</p>
