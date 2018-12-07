@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import Search from './Search';
 import DogList from './DogList';
 import DogDetail from './DogDetail';
@@ -31,8 +31,8 @@ class App extends Component {
       animal: 'dog',
       location
     }).then(resp => {
-      if(resp.petfinder.pets === undefined) {
-        return;
+      if (resp.petfinder.pets === undefined) {
+        return this.setState({dogs: []});
       } else {
         const dogs = resp.petfinder.pets.pet.map(pet => {
           return {
