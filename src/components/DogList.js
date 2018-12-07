@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DogListItem from './DogListItem'
 
 //MortForn APIKEY = f5fcb86ef14100e76fe6fd4849928f17
@@ -94,7 +94,7 @@ const DogList = ({dogs}) => {
        <h1 className="display-1">Your Barks!</h1>
       <h3 id="results-lead-up">It looks like you haven't liked any dogs yet!</h3>
       <h3 id="results-lead-up">What are you thinking, sit down and decide what dog you like!</h3>
-      <Link to='/match'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
+      <Link to='/'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
       </div>
     )
 
