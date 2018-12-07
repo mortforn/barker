@@ -31,20 +31,24 @@ class App extends Component {
       animal: 'dog',
       location
     }).then(resp => {
-      const dogs = resp.petfinder.pets.pet.map(pet => {
-        return {
-          age: pet.age,
-          name: pet.name,
-          breed: pet.breeds.breed,
-          desc: pet.description ? pet.description.normalize('NFD').replace(/a[\u0300-\u036f]/g, "'") : null,
-          id: pet.id,
-          sex: pet.sex,
-          size: pet.size,
-          animal: pet.animal,
-          image: pet.media ? pet.media.photos.photo[2].value : null
-        };
-      })
-      this.setState({dogs});
+      if(resp.petfinder.pets === undefined) {
+        return;
+      } else {
+        const dogs = resp.petfinder.pets.pet.map(pet => {
+          return {
+            age: pet.age,
+            name: pet.name,
+            breed: pet.breeds.breed,
+            desc: pet.description ? pet.description.normalize('NFD').replace(/a[\u0300-\u036f]/g, "'") : null,
+            id: pet.id,
+            sex: pet.sex,
+            size: pet.size,
+            animal: pet.animal,
+            image: pet.media ? pet.media.photos.photo[2].value : null
+          };
+        })
+        this.setState({dogs});  
+      }
     }).then(() => callback());
   }
     
@@ -86,7 +90,7 @@ class App extends Component {
           <Search routerProps={routerProps} fetchDogs={this.fetchDogs} />
         )} />
         <Route path='/match' render={() => (
-          <DogMatch moreInfo={this.state.moreInfo} showInfo={this.showInfo} changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
+          <DogMatch moreInfo={this.state.moreInfo} showInfo={this.showInfo} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
         )} />
         <Route path='/matches/:id' render={routerProps => (
           <DogDetail routerProps={routerProps} dogs={this.state.dogs} unmatchDog={this.unmatchDog} />

@@ -1,19 +1,19 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
-const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreInfo, showInfo}) => {
+const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, moreInfo, showInfo}) => {
+  // Locate current dog
+  const currentDog = dogs[dogIndex];
+
   // Handle no dogs being fetched
-  if(!dogs) {
+  if(!currentDog) {
     return(
-      <div className="text-center">
+      <div className="text-center mt-5">
         <h1>There aren't any dogs in this area :(</h1>
-        <Link to='/' className="btn btn-primary">Start Over</Link>
+        <Link to='/' className="btn btn-primary">Try Again</Link>
       </div>
     );
   }
-
-  // Locate current dog
-  const currentDog = dogs[dogIndex];
 
 
   // Like or dislike dog depending on button click
