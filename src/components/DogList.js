@@ -92,7 +92,7 @@ const DogList = ({dogs}) => {
       <h3 id="results-lead-up">It looks like you haven't liked any dogs yet!</h3>
       <h3 id="results-lead-up">What are you thinking, sit down and decide what dog you like!</h3>
       <Link to='/match'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
-      <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Search Elsewhere</button></Link>
+      <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Start Matching</button></Link>
       </div>
     )
 
@@ -105,7 +105,7 @@ const DogList = ({dogs}) => {
       <h3 id="results-lead-up">Based on your results, it looks like your favorite dogs are:</h3>
       <h4 id='preferences'>{ Preferences }</h4>
       <Link to='/match'><button className='btn btn-secondary mt-3 mb-5 mr-3'>Back</button></Link>
-      <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Start Over</button></Link>
+      <Link to='/'><button className='btn btn-primary mt-3 mb-5'>Search Elsewhere</button></Link>
       </div>
       <div className="row" id="list-of-matches">
         { Dawgz }
