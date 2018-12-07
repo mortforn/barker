@@ -28,7 +28,7 @@ class App extends Component {
     petFinder.pet.find({
       animal: 'dog',
       location
-    }).then(resp => { 
+    }).then(resp => {
       const dogs = resp.petfinder.pets.pet.map(pet => {
         return {
           age: pet.age,
@@ -39,7 +39,7 @@ class App extends Component {
           sex: pet.sex,
           size: pet.size,
           animal: pet.animal,
-          image: pet.media.photos.photo[2].value
+          image: pet.media ? pet.media.photos.photo[2].value : null
         };
       })
       this.setState({dogs});
@@ -56,10 +56,11 @@ class App extends Component {
 
   likeDog = dog => {
     this.setState({likedDogs: this.state.likedDogs.concat([dog])});
+    this.changeCurrentDog();
   }
 
   dislikeDog = dogId => {
-    this.setState({dislikedDogs: this.state.dislikedDogs.concat([dogId])});
+    this.changeCurrentDog();
   }
 
   showInfo = () => {
@@ -67,7 +68,7 @@ class App extends Component {
   }
 
   unmatchDog = dog => {
-    this.setState({dogs: this.state.dogs.filter(d => d.id !== dog.id)});
+    this.setState({likedDogs: this.state.likedDogs.filter(d => d.id !== dog.id)});
   }
 
 

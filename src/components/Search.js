@@ -16,11 +16,12 @@ class Search extends Component {
     );
   }
 
-  handleEnter = (e) => {
+  handleEnter = e => {
     if (e.which === 13) {
       this.handleClick();
     }
   }
+
 
   render() {
     return (
