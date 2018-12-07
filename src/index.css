@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: pink !important;
+  background: pink !important; 
 }
 
 code {
@@ -16,10 +16,10 @@ code {
 
 #homepage-card {
   display: block;
-  margin: auto;
+  /* margin: auto; */
   margin-top: 16.5%;
   color: white;
-  width: 40rem;
+  /* width: 40rem; */
   text-align: center;
   background-image: url('https://cdnblog.rentcafe.com/blog/wp-content/uploads/2012/05/Fotolia_34937840_Subscription_L.jpg');
 }
@@ -53,5 +53,4 @@ code {
 
 #list-of-matches {
   margin: 0 8.5%;
-
 }
