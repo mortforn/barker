@@ -44,8 +44,8 @@ code {
 }
 
 .thumbnail {
-  max-height: 350px;
-  max-width: auto;
+  max-height: 250px;
+  max-width: 250px;
   border-radius: 50%;
 }
 

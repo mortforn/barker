@@ -58,16 +58,19 @@ const DogList = ({dogs}) => {
     let compare = 0;
     let mostFrequent;
     dogList.forEach(dog => {
-      let breed = dog.breeds;
-      if (counts[breed] === undefined) {
-        counts[breed] = 1;
-      } else {
-        counts[breed] = counts[breed] + 1;
+      let breed = dog.breed;
+      if (typeof breed === 'object') {
+        breed = `${breed.join('-')} Mixe`;
       }
-      if (counts[breed] > compare) {
-        compare = counts[breed];
-        mostFrequent = dog.breeds;
-      }
+        if (counts[breed] === undefined) {
+          counts[breed] = 1;
+        } else {
+          counts[breed] = counts[breed] + 1;
+        }
+        if (counts[breed] > compare) {
+          compare = counts[breed];
+          mostFrequent = breed;
+        }
     });
     return mostFrequent;
   }
