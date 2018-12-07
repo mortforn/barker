@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreInfo, showInfo}) => {
+  // Handle no dogs being fetched
   if(!dogs) {
     return(
       <div className="text-center">
@@ -11,11 +12,13 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
     );
   }
 
+  // Locate current dog
   const currentDog = dogs[dogIndex];
 
+
+  // Like or dislike dog depending on button click
   const handleClick = e => {
     e.target.name === 'yes' ? likeDog(currentDog) : dislikeDog(currentDog.id);
-    changeCurrentDog();
   }
 
   return (
@@ -34,6 +37,7 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
               <button className="btn btn-secondary btn-sm ml-1" name='no' onClick={showInfo}>Info</button>
             </h2>
 
+              {/* Toggle more info */}
               {moreInfo ? 
               <Fragment>
               <p className="card-text"><strong>Sex: </strong>{currentDog.sex === 'F' ? 'Female' : 'Male'}</p>

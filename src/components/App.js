@@ -5,8 +5,9 @@ import DogList from './DogList';
 import DogDetail from './DogDetail';
 import pf from 'petfinder-client';
 import DogMatch from './DogMatch';
-// import {dogs} from '../dogs';
+// import {dogs} from '../dogs'; Hard-coded dogs
 
+// Setup pf-client with API creds
 const petFinder = pf({
   key: '5cfcc1035f4f0b975f35e94ea34baa4b',
   secret: '9d4c602278e3b5bd5e8ced462b26ba33'
@@ -19,11 +20,12 @@ class App extends Component {
     this.state = {
       moreInfo: false,
       dogs: [],
-      likedDogs: [],
+      likedDogs: [], 
       dogIndex: 0
     };
   }
 
+  // Fetch dogs from Petfinder API, set them as state, then redirect via the callback
   fetchDogs = (location, callback) => {
     petFinder.pet.find({
       animal: 'dog',
@@ -46,31 +48,36 @@ class App extends Component {
     }).then(() => callback());
   }
     
+  // Changes current dog on match page
   changeCurrentDog = () => {
     this.setState({dogIndex: this.state.dogIndex + 1});
   }
 
+  // Sets user's location on search page
   setLocation = location => {
     this.setState({location});
   }
 
+  // Add dog to likedDogs array if vote is 'Yes'
   likeDog = dog => {
     this.setState({likedDogs: this.state.likedDogs.concat([dog])});
     this.changeCurrentDog();
   }
 
+  // Simply changes current dog if vote is 'No'
   dislikeDog = () => {
     this.changeCurrentDog();
   }
 
+  // Toggle dog info on match page
   showInfo = () => {
     this.setState({moreInfo: !this.state.moreInfo});
   }
 
+  // Removes dog from likedDogs array
   unmatchDog = dog => {
     this.setState({likedDogs: this.state.likedDogs.filter(d => d.id !== dog.id)});
   }
-
 
   render() {
     return (
