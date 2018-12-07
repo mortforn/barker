@@ -6,7 +6,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: pink !important;
+}
+
+html, body {
+    background-image: linear-gradient(to bottom right, pink, coral) !important;
 }
 
 code {
@@ -53,5 +56,8 @@ code {
 
 #list-of-matches {
   margin: 0 8.5%;
+}
 
+#no-results-btn {
+  margin-bottom: 20px;
 }

@@ -2,14 +2,6 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreInfo, showInfo}) => {
-  if(!dogs) {
-    return(
-      <div className="text-center">
-        <h1>There aren't any dogs in this area :(</h1>
-        <Link to='/' className="btn btn-primary">Start Over</Link>
-      </div>
-    );
-  }
 
   const currentDog = dogs[dogIndex];
 
@@ -18,10 +10,17 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
     changeCurrentDog();
   }
 
-  return (
-    <div className="container my-5">
+  return !currentDog ? (
+<div className="container container-fluid" id="matches-header">
+      <h1 className="display-1">ERROR</h1>
+      <h3 id="results-lead-up">Believe it or not, no dogs have been found. Please search again</h3>
+      <div><Link to='/' className='btn btn-secondary mr-2' id="no-results-btn">Find me more Dogs!</Link></div>
+      <img src="http://foreverhomewanted.com/wp-content/uploads/2017/06/word-image-5.png" alt="sad dog" />
+      </div>
+  ) : (
+<div className="container my-5">
       <div className="row justify-content-center mb-3">
-        <Link to='/' className='btn btn-secondary mr-2'>Start Over</Link>
+        <Link to='/' className='btn btn-secondary mr-2'>Find me more Dogs!</Link>
         <Link to='/matches' className="btn btn-primary">My Barks</Link>
       </div>
       <div className="row">
@@ -50,7 +49,7 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
         </div>
       </div>
     </div>
-  );  
+  ) 
 };
 
 export default DogMatch;
