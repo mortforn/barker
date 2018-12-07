@@ -3,14 +3,14 @@ import {Switch, Route} from 'react-router-dom';
 import Search from './Search';
 import DogList from './DogList';
 import DogDetail from './DogDetail';
-// import pf from 'petfinder-client';
+import pf from 'petfinder-client';
 import DogMatch from './DogMatch';
-import {dogs} from '../dogs';
+// import {dogs} from '../dogs';
 
-// const petFinder = pf({
-//   key: '<INSERT API KEY HERE>',
-//   secret: '<INSERT API SECRET HERE>'
-// });
+const petFinder = pf({
+  key: '5cfcc1035f4f0b975f35e94ea34baa4b',
+  secret: '9d4c602278e3b5bd5e8ced462b26ba33'
+});
 
 class App extends Component {
   constructor(props) {
@@ -18,32 +18,33 @@ class App extends Component {
 
     this.state = {
       moreInfo: false,
-      location: '27701',
-      dogs,
+      dogs: [],
       likedDogs: [],
-      dogIndex: 0,
-      dislikedDogs: [] // Array of ids to avoid potential duplicate dog matches
+      dogIndex: 0
     };
   }
 
-  // componentDidMount() {
-  //   petFinder.pet.find({location: this.state.location}).then(resp => { // pet.find({animal: 'dog'}) doesn't work :/
-  //     const dogs = resp.petfinder.pets.pet.map(pet => {
-  //       return {
-  //         age: pet.age,
-  //         name: pet.name,
-  //         breeds: pet.breeds,
-  //         desc: pet.description,
-  //         id: pet.id,
-  //         sex: pet.sex,
-  //         size: pet.size,
-  //         animal: pet.animal,
-  //         images: pet.media.photos
-  //       };
-  //     })
-  //     this.setState({fetchedDogs: dogs});
-  //   });
-  // }
+  fetchDogs = (location, callback) => {
+    petFinder.pet.find({
+      animal: 'dog',
+      location
+    }).then(resp => { 
+      const dogs = resp.petfinder.pets.pet.map(pet => {
+        return {
+          age: pet.age,
+          name: pet.name,
+          breed: pet.breeds.breed,
+          desc: pet.description,
+          id: pet.id,
+          sex: pet.sex,
+          size: pet.size,
+          animal: pet.animal,
+          image: pet.media.photos.photo[2].value
+        };
+      })
+      this.setState({dogs});
+    }).then(() => callback());
+  }
     
   changeCurrentDog = () => {
     this.setState({dogIndex: this.state.dogIndex + 1});
@@ -73,7 +74,9 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={Search} />
+        <Route exact path='/' render={routerProps => (
+          <Search routerProps={routerProps} fetchDogs={this.fetchDogs} />
+        )} />
         <Route path='/match' render={() => (
           <DogMatch moreInfo={this.state.moreInfo} showInfo={this.showInfo} changeCurrentDog={this.changeCurrentDog} dogs={this.state.dogs} dogIndex={this.state.dogIndex} likeDog={this.likeDog} dislikeDog={this.dislikeDog} />
         )} />
@@ -81,7 +84,7 @@ class App extends Component {
           <DogDetail routerProps={routerProps} dogs={this.state.dogs} unmatchDog={this.unmatchDog} />
         )} />
         <Route path='/matches' render={() => (
-          <DogList dogs={this.state.dogs} />
+          <DogList dogs={this.state.likedDogs} />
         )} />
       </Switch>
     );

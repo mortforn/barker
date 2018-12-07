@@ -23,14 +23,11 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
               <span>{currentDog.name}</span>
               <button className="btn btn-secondary btn-sm ml-1" name='no' onClick={showInfo}>Info</button>
             </h2>
-            
 
               {moreInfo ? 
               <Fragment>
-              <p><strong>Breeds: </strong>
-                {currentDog.breeds.map((breed, index) => <span key={index}>{breed}, </span>)}
-              </p>
               <p className="card-text"><strong>Sex: </strong>{currentDog.sex === 'F' ? 'Female' : 'Male'}</p>
+              <p className="card-text"><strong>Breed: </strong>{currentDog.breed}</p>
               <p className="card-text"><strong>Age: </strong>{currentDog.age}</p>
               <p className="card-text"><strong>Size: </strong>{currentDog.size}</p>
               </Fragment>
