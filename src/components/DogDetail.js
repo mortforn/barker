@@ -21,13 +21,11 @@ const DogDetail = ({routerProps, dogs, unmatchDog}) => {
             <img className="card-img-top" src={dog.image} alt="Dog 1" />
             <div className="card-body">
               <h2 className="card-title">{dog.name}</h2>
-              <p><strong>Breeds: </strong>
-                {dog.breeds.map((breed, index) => <span key={index}>{breed}, </span>)}
-              </p>
+              <p><strong>Breeds: </strong>{dog.breed}</p>
               <p className="card-text"><strong>Sex: </strong>{dog.sex === 'F' ? 'Female' : 'Male'}</p>
               <p className="card-text"><strong>Age: </strong>{dog.age}</p>
               <p className="card-text"><strong>Size: </strong>{dog.size}</p>
-              <p className="card-text"><strong>Description: </strong>{dog.description}</p>
+              <p className="card-text"><strong>Description: </strong>{dog.desc}</p>
               <button className="btn btn-danger" name='no' onClick={handleClick}>Unmatch</button>
             </div>
           </div>
