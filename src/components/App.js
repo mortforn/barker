@@ -34,7 +34,7 @@ class App extends Component {
           age: pet.age,
           name: pet.name,
           breed: pet.breeds.breed,
-          desc: pet.description,
+          desc: pet.description ? pet.description.normalize('NFD').replace(/a[\u0300-\u036f]/g, "'") : null,
           id: pet.id,
           sex: pet.sex,
           size: pet.size,
@@ -59,7 +59,7 @@ class App extends Component {
     this.changeCurrentDog();
   }
 
-  dislikeDog = dogId => {
+  dislikeDog = () => {
     this.changeCurrentDog();
   }
 

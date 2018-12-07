@@ -20,7 +20,8 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
 
   return (
     <div className="container my-5">
-      <div className="row float-right">
+      <div className="row justify-content-center mb-3">
+        <Link to='/' className='btn btn-secondary mr-2'>Start Over</Link>
         <Link to='/matches' className="btn btn-primary">My Barks</Link>
       </div>
       <div className="row">
