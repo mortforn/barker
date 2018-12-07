@@ -18,6 +18,11 @@ code {
     monospace;
 }
 
+.dog-img {
+  width: 300px;
+  height: 400px;
+}
+
 #homepage-card {
   display: block;
   /* margin: auto; */
