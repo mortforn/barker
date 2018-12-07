@@ -2,6 +2,15 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreInfo, showInfo}) => {
+  if(!dogs) {
+    return(
+      <div className="text-center">
+        <h1>There aren't any dogs in this area :(</h1>
+        <Link to='/' className="btn btn-primary">Start Over</Link>
+      </div>
+    );
+  }
+
   const currentDog = dogs[dogIndex];
 
   const handleClick = e => {
@@ -17,7 +26,7 @@ const DogMatch = ({dogs, dogIndex, likeDog, dislikeDog, changeCurrentDog, moreIn
       <div className="row">
         <div className="col-md-4 offset-md-4">
           <div className="card">
-            <img className="card-img-top" src={currentDog.image} alt="Dog 1" />
+            <img className="card-img-top" src={currentDog.image} alt={currentDog.name} />
             <div className="card-body">
             <h2 className="card-title">
               <span>{currentDog.name}</span>
